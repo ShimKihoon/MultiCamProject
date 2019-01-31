@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="seat">
+	<insert id="insert">
+		insert into seats (resnum, moviename, movietime, Id, movieseat,snack)
+			values (seq_num.nextval, #{moviename},#{movietime},#{Id},#{movieseat},#{snack})
+	</insert>
+	
+	<select id="select" resultType="member.SeatVO">
+		select * from seats where movietime=#{movietime} and moviename=#{moviename}
+	</select>
+	
+	<select id="select_all" resultType="member.SeatVO">
+		select * from seats
+	</select>
+	
+	<select id="select_seat" resultType="String">
+		select movieseat from seats where movietime=#{movietime} and moviename=#{moviename}
+	</select>
+</mapper>  
+  
+<!-- seatMapper.xml -->

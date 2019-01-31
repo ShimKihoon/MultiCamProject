@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="user">
+	<insert id="insert">
+		insert into users (name, id, pw, birthdate)
+			values (#{name},#{id},#{pw}, to_date(#{birthdate},'yyyy/mm/dd'))
+	</insert>
+	<select id="check" resultType="int">
+		select count(*) from users where id=#{id}
+	</select>
+	<select id="login" resultType = "int">
+		select count(*) from users where pw = #{pw} and id = #{id}
+	</select>
+	
+	<select id="select" resultType="member.MemberVO">
+		select * from users where id not like 'admin'
+	</select>
+	
+</mapper>  
+  
+<!-- userMapper.xml -->
