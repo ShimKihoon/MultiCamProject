@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="history">
+	<insert id="insert">
+		insert into history (id, mname, mtime, mseat)
+			values (#{id},#{mname},#{mtime},#{mseat})
+	</insert>
+	
+	<select id="select" resultType="member.HistoryVO">
+		select * from history
+	</select>
+	<insert id="insert_id">
+		insert into history(id) values (#{id})
+	</insert>
+</mapper>  
+  
+<!-- historyMapper.xml -->
